@@ -14,7 +14,6 @@ input=input.map(Number);
 for (let i = 1; i < input.length; i++) {
       detail=input[i]; 
       console.log(`Processing chunck ${detail} microns`);
-      
 }
 
 }
