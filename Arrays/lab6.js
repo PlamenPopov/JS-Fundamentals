@@ -7,7 +7,6 @@ function solve(input) {
            result.push(num[i]);
          }
      }
-     let map=result.map(el=>el*2)
-     console.log(map.reverse())
+     console.log(result.map(el=>el*2).reverse().join(" "))
  }
  solve([3, 0, 10, 4, 7, 3])
