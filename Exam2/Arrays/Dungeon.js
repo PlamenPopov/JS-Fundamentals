@@ -1,0 +1,53 @@
+function solve(data=[]) {
+    
+let bestRoom=0;
+let health=100;
+let coins=0;
+
+let dungeon=data[0].split('|');
+
+for (const room of dungeon) {
+    let tokens=room.split(' ');
+    let encounter=tokens[0];
+    let value=Number(tokens[1]);
+
+    if(encounter==="potion"){
+        if(health+value>100){
+             console.log(  `You healed for ${100-health} hp.`);
+             health=100;
+        }else{
+            console.log(`You healed for ${value}`);
+            health+=value;
+        }
+        console.log(`Current health is ${health}`);
+        bestRoom++;
+    }else if(encounter==="chest"){
+        coins+=value;
+        console.log(`You found ${value} coins.`);
+        bestRoom++;
+    }else{
+        health-=value;
+        if(health<=0){
+            console.log(`You are dead!Killed by ${encounter}.`);
+            bestRoom++;
+            console.log(`Best room:${bestRoom}`);
+            break;
+        }else{
+            console.log(`You slayed a ${encounter}.`);
+            bestRoom++;
+        }
+    }
+
+
+}
+
+if(bestRoom===dungeon.length){
+    console.log(`You have made it!`);
+    console.log(`Coins: ${coins}`);
+    console.log(`Health: ${health}`);
+
+}
+
+}
+
+solve(["rat 10|bat 20|potion 10|rat 10|chest 100|boss 70|chest 1000"])
